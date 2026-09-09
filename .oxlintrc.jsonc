@@ -179,6 +179,8 @@
         "eslint/max-lines-per-function": "off",
         "typescript/no-unsafe-type-assertion": "off",
         "unicorn/consistent-function-scoping": "off", // allow setup helpers inside describe blocks
+        "vitest/consistent-test-it": ["error", { "fn": "it" }],
+        "vitest/require-top-level-describe": "error",
         "vitest/require-test-timeout": "off",
       },
     },
