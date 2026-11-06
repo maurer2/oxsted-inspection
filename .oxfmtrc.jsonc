@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "singleQuote": true,
+  "jsxSingleQuote": false,
   "singleAttributePerLine": true,
   // "svelte": true,
   "sortImports": {
@@ -59,6 +60,10 @@
       ],
       "unknown",
     ],
+    "newlinesBetween": true,
+    "partitionByComment": true,
+    "partitionByNewline": false,
+    "sortSideEffects": false,
   },
   "sortPackageJson": {
     "sortScripts": true,
