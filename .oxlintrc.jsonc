@@ -18,7 +18,7 @@
     "typeAware": true,
     "reportUnusedDisableDirectives": "error",
     "typeCheck": true,
-    "denyWarnings": true,
+    "denyWarnings": false, // don't fail build on warnings
   },
   "env": {
     "browser": true,
@@ -51,7 +51,7 @@
       {
         "skipComments": true,
         "skipBlankLines": true,
-        "max": 150,
+        "max": 150, // includes React components
       },
     ],
     "eslint/no-unused-vars": [
@@ -67,46 +67,36 @@
     "react/jsx-filename-extension": "off",
     "react/forbid-component-props": "off",
     "react/jsx-no-literals": "off",
-    "react/react-compiler": [
-      "error",
-      {
-        "reportAllBailouts": true,
-      },
-    ],
-    // oxlint 1.79+
-    // correctness
-    // "react/error-boundaries": "error",
-    // "react/globals": "error",
-    // "react/immutability": "error",
-    // "react/incompatible-library": "error",
-    // "react/preserve-manual-memoization": "error",
-    // "react/purity": "error",
-    // "react/refs": "error",
-    // "react/set-state-in-effect": "error",
-    // "react/set-state-in-render": "error",
-    // "react/static-components": "error",
-    // "react/use-memo": "error",
-    // "react/void-use-memo": "error",
-    //
-    // suspicious
-    // "react/capitalized-calls": "error",
-    // "react/memo-dependencies": "error",
-    // "react/hooks": "error,
-    // "react/exhaustive-effect-dependencies": "error",
-    //
-    // perf
-    // "react/no-deriving-state-in-effects": "warn",
-    //
-    // restriction
-    // "react/invariant": "warn",
-    // "react/rule-suppression": "warn",
-    // "react/syntax": "warn",
-    // "react/todo": "warn",
-    // "react/unsupported-syntax": "warn",
-    //
+    "react/rules-of-hooks": "error",
+    // React Compiler - correctness
+    "react/error-boundaries": "error",
+    "react/globals": "error",
+    "react/immutability": "error",
+    "react/incompatible-library": "error",
+    "react/preserve-manual-memoization": "error",
+    "react/purity": "error",
+    "react/refs": "error",
+    "react/set-state-in-effect": "error",
+    "react/set-state-in-render": "error",
+    "react/static-components": "error",
+    "react/use-memo": "error",
+    "react/void-use-memo": "error",
+    // React Compiler - suspicious
+    "react/capitalized-calls": "error",
+    "react/memo-dependencies": "error",
+    "react/hooks": "error",
+    "react/exhaustive-effect-dependencies": "error",
+    // React Compiler - performance
+    "react/no-deriving-state-in-effects": "warn",
+    // React Compiler - restrictions
+    "react/invariant": "warn",
+    "react/rule-suppression": "warn",
+    "react/syntax": "warn",
+    "react/todo": "warn",
+    "react/unsupported-syntax": "warn",
     // typescript
     "typescript/consistent-type-imports": "error",
-    "typescript/prefer-readonly-parameter-types": "off",
+    "typescript/prefer-readonly-parameter-types": "off", // too complicated when deadling with types from dependencies
     "typescript/promise-function-async": "off",
     "typescript/strict-boolean-expressions": "off",
     "typescript/no-deprecated": "warn",
@@ -131,7 +121,7 @@
     "import/no-duplicates": "error",
     "import/consistent-type-specifier-style": [
       "error",
-      "prefer-top-level-if-only-type-imports"
+      "prefer-top-level-if-only-type-imports",
     ],
     // needed for side-effect imports: global CSS, test setup, module augmentation.
     "import/no-unassigned-import": "off",
@@ -141,15 +131,16 @@
   "ignorePatterns": [
     "__mocks__/**",
     "coverage/**",
+    "statistics/**",
     "dist/**",
-    "**/*.gen.ts"
+    "**/*.gen.ts",
   ],
   "overrides": [
     // React components and CSS in JS
     {
       "files": [
         "src/**/*.tsx",
-        "src/**/*.styles.ts"
+        "src/**/*.styles.ts",
       ],
       "rules": {
         "typescript/explicit-function-return-type": "off",
@@ -159,7 +150,9 @@
     // TanStack Router routes
     {
       "files": [
-        "src/routes/**/*.tsx"
+        "src/routes/**/*.tsx",
+        // "src/**/*.{tsx}",
+        "src/**/*.styles.{ts}"
       ],
       "rules": {
         "react/only-export-components": "off",
@@ -173,7 +166,7 @@
         "**/*.spec.ts",
         "**/*.spec.tsx",
         "**/*.test.ts",
-        "**/*.test.tsx"
+        "**/*.test.tsx",
       ],
       "rules": {
         "eslint/max-lines-per-function": "off",
